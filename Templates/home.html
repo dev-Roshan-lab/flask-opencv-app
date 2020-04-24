@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Face detection</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<script>
+	function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(200)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<body>
+
+<div>
+  <h1><b><p align="center">Face Detection With OpenCV</p></b></h1>
+</div>
+
+
+<header class="navbar">
+    <form action="/upload" method="POST" enctype="multipart/form-data" >
+        <div align="center">
+            <label class="btn btn-default btn-file">
+			<div align="center">
+               <input type="file" class="custom-file-input" name="image" id="image" onchange="readURL(this);" />
+			</div>
+			<br>
+			<img src="" id="blah" >
+            </label>
+		</div>	
+		
+		<hr>
+		
+		<div align="center">	
+            <input type="submit" value="Upload your image" class="btn btn-primary">
+        </div>
+    </form>
+</header>
+
+<div class="text-center">
+    {% if init %}
+        {% if faceDetected %}
+            <div class="alert alert-success" style="margin-top:20px;">
+                <strong>Yes!</strong> {{ num_faces }} face(s) detected!
+				<hr>
+				<img src="{{ image_to_show }}">
+            </div>    
+        {% else %}
+            <div class="alert alert-danger" style="margin-top:18px;">
+                <strong>Nope!</strong> No face detected
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+
+</body>
+</html>
