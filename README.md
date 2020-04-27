@@ -29,7 +29,7 @@ from edge detection to cancer detction with KNN in OpenCV
     - Heroku Account
     - git installed on your machine
 
-> #### Steps
+### Steps
  Create a Virtual Env
 - run command "_pip install virtualenv_" to install Virtual env because we dont want to waste Our Data On installing the requirements on server
 - run command "_python venv env_" to create virtual environment named "env"
